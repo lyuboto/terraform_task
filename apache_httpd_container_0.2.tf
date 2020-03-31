@@ -15,6 +15,6 @@ resource "docker_container" "httpd" {
   image = "${docker_image.blubird_image.name}"
   volumes {
     volume_name = "${docker_volume.blubird_volume.name}"
-	container_path = "/www/var/html"
+    container_path = "/www/var/html"
   }
 }
