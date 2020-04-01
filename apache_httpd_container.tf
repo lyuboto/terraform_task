@@ -9,27 +9,27 @@ provider "docker" {
   host = "unix:///var/run/docker.sock"
 }
 
-resource "docker_image" "blubird_image" {
+resource "docker_image" "docker_image" {
   name = var.docker_image_name
 }
 
-resource "docker_network" "blubird_network" {
+resource "docker_network" "docker_network" {
   name = var.docker_network_name
 }
 
-resource "docker_volume" "blubird_volume" {
+resource "docker_volume" "docker_volume" {
   name = var.docker_volume_name
 }
 
-resource "docker_container" "blubird_container" {
+resource "docker_container" "docker_container" {
   name  = var.docker_container_name
-  image = docker_image.blubird_image.name
+  image = docker_image.docker_image.name
   volumes {
-    volume_name    = docker_volume.blubird_volume.name
+    volume_name    = docker_volume.docker_volume.name
     container_path = "/var/www/html"
   }
   networks_advanced {
-    name = docker_network.blubird_network.name
+    name = docker_network.docker_network.name
   }
   ports {
     internal = "80"
